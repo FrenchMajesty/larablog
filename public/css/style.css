@@ -6911,7 +6911,7 @@ body .qr-black-theme,
 .post-item-paragraph p.with-img .img-caption:hover {
 	color: #a28671;
 }
-.post-item-paragraph p a:not(.more) {
+.post-item-paragraph p a:not(.more), footer .outer {
 	color: #a28671;
 	border-bottom:solid 2px #a28671;
 }
