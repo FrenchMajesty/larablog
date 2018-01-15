@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use CURL;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -12,6 +13,12 @@ class AdminController extends Controller
 	 */
     public function index()
     {
-    	return view('panel.index');
+    	$curl = new CURL;
+    	$response = $curl->get('http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1');
+    	$quote = json_decode($response->body)[0];
+    	$posts = collect([]);
+    	$archives = collect([]);
+
+    	return view('panel.index', compact('quote', 'posts', 'archives'));
     }
 }

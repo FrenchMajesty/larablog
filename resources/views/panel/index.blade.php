@@ -14,10 +14,10 @@
 
 					<div class="laread-right">
 
-						<form class="laread-form search-form">
+						<!--form class="laread-form search-form">
 							<div class="input"><input type="text" class="form-control" placeholder="Search..."></div>
 							<button type="submit" class="btn btn-link"><i class="fa fa-search"></i></button>
-						</form>
+						</form-->
 
 						<!--ul class="laread-list category-list">
 							<li class="title">CATEGORY</li>
@@ -29,13 +29,21 @@
 
 						<ul class="laread-list recent-post-list">
 							<li class="title">RECENT POSTS</li>
+							@if($posts->count() > 0)
+								@foreach($posts as $post)
+									<li>
+										<a href="#">{{$post->title}}</a>
+										<i class="date">{{$post->created_at->format('M dS, Y')}}</i>
+									</li>
+								@endforeach
+							@else
+								<p>You do not have any publications yet.</p>
+							@endif
                             <?php
                                 if(count([]) > 0) {
                                     foreach($recentPosts as $post) {
                                         echo '<li><a href="#">'.$post->getName().'</a><i class="date">'.date("M d, Y", strtotime($post->getDate())).'</i></li>';
                                     }
-                                }else {
-                                    echo '<p>You do not have any publications yet.</p>';
                                 }
                             ?>
 						</ul>
@@ -44,15 +52,15 @@
 
 							<a href="#" tabindex="0" role="button" data-toggle="popover" data-placement="left" data-content="<a href='#'><i class='fa fa-facebook'></i></a><a href='#'><i class='fa fa-twitter'></i></a>" class="quotes-share" data-original-title="" title=""><i class="fa fa-share-alt"></i></a>
 
-							<span class="quotes-number"><span>No</span> <br><i>04</i></span><br>
-							<p>“The difference between stupidity and genius is that genius has its limits.”</p>
-							<span class="whosay">- Albert Einstein </span>
+							<span class="quotes-number"><span>No</span> <br><i>{{rand(0,500)}}</i></span><br>
+							{!! $quote->content !!}
+							<span class="whosay">- {{$quote->title}} </span>
 						</div>
 
                         <ul class="laread-list dribbble-border-bar">
 							<li class="title">DRIBBBLE</li>
 							<li>
-								<a href="#"><img src="{{asset('img/img-40.png')}}" alt=""></a>
+								<a href="#"><img src="{{asset('public/img/img-40.png')}}" alt=""></a>
 								<p><a href="https://dribbble.com/"><i class="fa fa-dribbble"></i> more by Ronlewhorn</a></p>
 							</li>
 						</ul>
@@ -109,52 +117,13 @@
 
 					<div class="laread-right">
 
-						<div class="laread-list tweets-bar">
-							<i class="fa fa-twitter"></i>
-							<a href="#" class="username">@Hercules_group</a>
-							<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-								<div class="carousel-inner">
-									<div class="item active left">
-										<p>New version of JD Blog will be available on ThemeForest at monday.<span class="date">/Apr 14</span></p>
-										<p class="tweets-icons">
-											<a href="#"><i class="fa fa-reply"></i> replay</a>
-											<a href="#"><i class="fa fa-retweet"></i> retweet</a>
-											<a href="#"><i class="fa fa-star"></i> favorite</a>
-										</p>
-									</div>
-									<div class="item next left" style="height: 123px;">
-										<p>New version of JD Blog will be available on ThemeForest at monday.<span class="date">/Apr 15</span></p>
-										<p class="tweets-icons">
-											<a href="#"><i class="fa fa-reply"></i> replay</a>
-											<a href="#"><i class="fa fa-retweet"></i> retweet</a>
-											<a href="#"><i class="fa fa-star"></i> favorite</a>
-										</p>
-									</div>
-									<div class="item">
-										<p>New version of JD Blog will be available on ThemeForest at monday.<span class="date">/Apr 16</span></p>
-										<p class="tweets-icons">
-											<a href="#"><i class="fa fa-reply"></i> replay</a>
-											<a href="#"><i class="fa fa-retweet"></i> retweet</a>
-											<a href="#"><i class="fa fa-star"></i> favorite</a>
-										</p>
-									</div>
-								</div>
-								<a class="left" href="#carousel-example-generic" role="button" data-slide="prev">
-									<i class="fa fa-chevron-left"></i>
-								</a>
-								<a class="right" href="#carousel-example-generic" role="button" data-slide="next">
-									<i class="fa fa-chevron-right"></i>
-								</a>
-							</div>
-						</div>
-
 						<ul class="laread-list instagram-border-bar">
 							<li class="title">INSTAGRAM PHOTOS</li>
 							<li>
-								<a href="#"><img src="{{asset('img/img-42.png')}}" alt=""></a>
-								<a href="#"><img src="{{asset('img/img-42.png')}}" alt=""></a>
-								<a href="#"><img src="{{asset('img/img-42.png')}}" alt=""></a>
-								<a href="#"><img src="{{asset('img/img-42.png')}}" alt=""></a>
+								<a href="#"><img src="{{asset('public/img/img-42.png')}}" alt=""></a>
+								<a href="#"><img src="{{asset('public/img/img-42.png')}}" alt=""></a>
+								<a href="#"><img src="{{asset('public/img/img-42.png')}}" alt=""></a>
+								<a href="#"><img src="{{asset('public/img/img-42.png')}}" alt=""></a>
 								<p><a href="https://instagram.com/" target="_blank"><i class="fa fa-instagram"></i> by Hercules_group</a></p>
 							</li>
 						</ul>
