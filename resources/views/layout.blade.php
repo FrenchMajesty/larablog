@@ -48,7 +48,7 @@
 						<a class="navbar-brand" href="{{route('index')}}"><img height="64" src="{{asset('public/img/logo-light.png')}}" alt=""></a>
 					</div>
 					@if(\Auth::user())
-						<a href="#" class="modal-form" style="margin-left: 10px">
+						<a href="{{route('panel.index')}}" class="modal-form" style="margin-left: 10px">
 						<i class="fa fa-bars"></i>
 					</a>
 					@endif
@@ -79,7 +79,7 @@
 							<li>
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">ABOUT</a>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="{{route('about')}}">About Me and How to Reach Me</a></li>
+									<li><a href="{{route('about')}}">More About Me</a></li>
 								</ul>
 							</li>
 						</ul>
