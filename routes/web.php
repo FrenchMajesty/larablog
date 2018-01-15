@@ -18,4 +18,10 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
 
 	Route::get('/', 'AdminController@index')->name('panel.index');
 
+	Route::get('/account', 'BloggerController@edit')->name('panel.account');
+
+	Route::post('/account', 'BloggerController@update');
+
+	Route::post('/password', 'BloggerController@passwordUpdate')->name('password.update');
+
 });
