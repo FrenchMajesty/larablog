@@ -6,31 +6,31 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="icon" href="{{asset('images/favicon.ico')}}">
+<link rel="icon" href="{{asset('public/img/favicon.ico')}}">
 <title>@yield('pageTitle') - {{env('APP_NAME')}} Admin Dashboard</title>
 <!-- Bootstrap core CSS -->
-<link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+<link href="{{asset('public/css/bootstrap.min.css')}}" rel="stylesheet">
 <!-- Font Awesome CSS -->
 <script src="https://use.fontawesome.com/53cc68c3d4.js"></script>
 <!-- Jasny CSS -->
-<link href="{{asset('css/jasny-bootstrap.min.css')}}" rel="stylesheet">
+<link href="{{asset('public/css/jasny-bootstrap.min.css')}}" rel="stylesheet">
 <!-- Animate CSS -->
-<link href="{{asset('css/animate.css')}}" rel="stylesheet">
+<link href="{{asset('public/css/animate.css')}}" rel="stylesheet">
 <!-- Code CSS -->
-<link href="{{asset('css/tomorrow-night.css')}}" rel="stylesheet" />
+<link href="{{asset('public/css/tomorrow-night.css')}}" rel="stylesheet" />
 <!-- Gallery CSS -->
-<link href="{{asset('css/bootstrap-gallery.css')}}" rel="stylesheet">
+<link href="{{asset('public/css/bootstrap-gallery.css')}}" rel="stylesheet">
 <!-- ColorBox CSS -->
-<link href="{{asset('css/colorbox.css')}}" rel="stylesheet">
+<link href="{{asset('public/css/colorbox.css')}}" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <!-- Custom font -->
 <link href='http://fonts.googleapis.com/css?family=Raleway:400,200,100,300,500,600,700,800,900' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Roboto+Slab&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 <!-- Custom styles for this template -->
-<link href="{{asset('css/style.css')}}" rel="stylesheet">
-<link href="{{asset('css/fileinput.min.css')}}" rel="stylesheet">
-<link href="{{asset('css/froala_style.min.css')}}" rel="stylesheet">
-<link href="{{asset('css/froala_editor.pkgd.min.css')}}" rel="stylesheet">
+<link href="{{asset('public/css/style.css')}}" rel="stylesheet">
+<link href="{{asset('public/css/fileinput.min.css')}}" rel="stylesheet">
+<link href="{{asset('public/css/froala_style.min.css')}}" rel="stylesheet">
+<link href="{{asset('public/css/froala_editor.pkgd.min.css')}}" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -51,7 +51,7 @@
 			<nav class="navbar navbar-fixed-top nav-down navbar-laread">
 				<div class="container">
 					<div class="navbar-header">
-						<a class="navbar-brand" href="{{route('index')}}"><img height="64" src="{{asset('images/logo-light.png')}}" alt=""></a>
+						<a class="navbar-brand" href="{{route('index')}}"><img height="64" src="{{asset('public/img/logo-light.png')}}" alt=""></a>
 					</div>
 					<button type="button" class="navbar-toggle collapsed menu-collapse" data-toggle="collapse" data-target="#main-nav">
 						<span class="sr-only">Toggle navigation</span>
@@ -62,9 +62,8 @@
 							<li>
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dashboard</a>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="panel/">Homepage</a></li>
-									<!--li><a href="panel/stats">Stats</a></li-->
-									<li><a href="panel/logout">Log Out</a></li>
+									<li><a href="{{route('panel.index')}}">Homepage</a></li>
+									<li><a href="{{route('logout')}}">Log Out</a></li>
 								</ul>
 							</li>
 							<li>
@@ -89,25 +88,14 @@
 								</ul>
 							</li>
 						</ul>
-					</div><!--/.nav-collapse -->
+					</div>
 				</div>
 			</nav>
 		</header>
 
 		@yield('content')
 
-		<footer class="container-fluid footer">
-			<div class="container text-center">
-				<div class="footer-logo"><img src="{{asset('images/logo-black.png')}}" alt=""></div>
-                <p class="laread-motto">Website Designed by <a href="victron-tech.com" target="_blank">Victron</a> for {{env('BLOGGER_NAME')}}.</p>
-
-				<div class="laread-social">
-					<a href="#" class="fa fa-twitter"></a>
-					<a href="#" class="fa fa-facebook"></a>
-					<a href="#" class="fa fa-pinterest"></a>
-				</div>
-			</div>
-		</footer>
+		@include('partials.footer')
 	</div>
 
 	<!-- Bootstrap core JavaScript
@@ -116,25 +104,25 @@
 	<script id="twitter-wjs" src="https://platform.twitter.com/widgets.js"></script>
     <script id="facebook-jssdk" src="https://connect.facebook.net/tr_TR/sdk.js#xfbml=1&amp;appId=571763212946322&amp;version=v2.0"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-	<script src="{{asset('js/bootstrap.min.js')}}"></script>
-	<script src="{{asset('js/jasny-bootstrap.min.js')}}"></script>
-	<script src="{{asset('js/prettify.js')}}"></script>
-	<script src="{{asset('js/lang-css.js')}}"></script>
-	<script src="{{asset('js/jquery.blueimp-gallery.min.js')}}"></script>
-	<script src="{{asset('js/imagesloaded.js')}}"></script>
-	<script src="{{asset('js/masonry.js')}}"></script>
-	<script src="{{asset('js/viewportchecker.js')}}"></script>
-	<script src="{{asset('js/jquery.dotdotdot.min.js')}}"></script>
-	<script src="{{asset('js/jquery.colorbox-min.js')}}"></script>
-	<script src="{{asset('js/jquery.nicescroll.min.js')}}"></script>
-	<script src="{{asset('js/isotope.pkgd.min.js')}}"></script>
-	<script src="{{asset('js/jquery.ellipsis.min.js')}}"></script>
-	<script src="{{asset('js/calendar.js')}}"></script>
-    <script src="{{asset('js/jquery.touchSwipe.min.js')}}"></script>
-	<script src="{{asset('js/script.js')}}"></script>
-	<script src="{{asset('js/custom.js')}}"></script>
-	<script src="{{asset('js/fileinput.min.js')}}"></script>
-	<script src="{{asset('js/froala_editor.pkgd.min.js')}}"></script>
+	<script src="{{asset('public/js/bootstrap.min.js')}}"></script>
+	<script src="{{asset('public/js/jasny-bootstrap.min.js')}}"></script>
+	<script src="{{asset('public/js/prettify.js')}}"></script>
+	<script src="{{asset('public/js/lang-css.js')}}"></script>
+	<script src="{{asset('public/js/jquery.blueimp-gallery.min.js')}}"></script>
+	<script src="{{asset('public/js/imagesloaded.js')}}"></script>
+	<script src="{{asset('public/js/masonry.js')}}"></script>
+	<script src="{{asset('public/js/viewportchecker.js')}}"></script>
+	<script src="{{asset('public/js/jquery.dotdotdot.min.js')}}"></script>
+	<script src="{{asset('public/js/jquery.colorbox-min.js')}}"></script>
+	<script src="{{asset('public/js/jquery.nicescroll.min.js')}}"></script>
+	<script src="{{asset('public/js/isotope.pkgd.min.js')}}"></script>
+	<script src="{{asset('public/js/jquery.ellipsis.min.js')}}"></script>
+	<script src="{{asset('public/js/calendar.js')}}"></script>
+    <script src="{{asset('public/js/jquery.touchSwipe.min.js')}}"></script>
+	<script src="{{asset('public/js/script.js')}}"></script>
+	<script src="{{asset('public/js/custom.js')}}"></script>
+	<script src="{{asset('public/js/fileinput.min.js')}}"></script>
+	<script src="{{asset('public/js/froala_editor.pkgd.min.js')}}"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
 
