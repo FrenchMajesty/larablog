@@ -14,7 +14,8 @@ class BloggerController extends Controller
 	 */
     public function index()
     {
-    	return view('site.about');
+    	$user = User::first();
+    	return view('site.about', compact('user'));
     }
 
     /**
@@ -40,6 +41,7 @@ class BloggerController extends Controller
     		'email' => 'required|email|max:100',
     		'image' => 'required|string',
     		'location' => 'required|string|max:80',
+    		'title' => 'required|string|max:100',
     		'biography' => 'required|string|min:20|max:10000',
     	]);
 
@@ -49,6 +51,7 @@ class BloggerController extends Controller
     	$user->email = $request->email;
     	$user->picture = $request->image;
     	$user->location = $request->location;
+    	$user->title = $request->title;
     	$user->biography = $request->biography;
     	$user->save();
 

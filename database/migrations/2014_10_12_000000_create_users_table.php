@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('picture');
             $table->string('location');
             $table->string('biography');
+            $table->string('title');
             $table->rememberToken();
             $table->timestamps();
         });

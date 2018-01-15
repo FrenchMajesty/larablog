@@ -73,8 +73,8 @@
                                                 <h6 class="comment-heading">Name</h6><br>
                                                 <div class="comment-form">
                                                     <div class="row">
-                                                    <input value="{{old('firstname') ?: $user->firstname}}" class="comment-input" placeholder="First name" type="text" name="firstname" required>
-                                                    <input value="{{old('lastname') ?: $user->lastname}}" class="comment-input" placeholder="Last name" type="text" name="lastname" required>
+                                                    <input value="{{old('firstname') ?: $user->firstname}}" class="comment-input" placeholder="First name" type="text" name="firstname" maxlength="100" required>
+                                                    <input value="{{old('lastname') ?: $user->lastname}}" class="comment-input" placeholder="Last name" type="text" name="lastname" maxlength="100" required>
                                                     </div>
                                                     @if ($errors->has('name'))
                                                         <br>
@@ -97,10 +97,23 @@
                                                     @endif
                                                 </div>
 
+                                                <h6 class="comment-heading">Current Title</h6><br>
+                                                <div class="comment-form">
+                                                    <div class="row">
+                                                    <input value="{{old('title') ?: $user->title}}" class="comment-input" placeholder="eg: Student / Software Developer" type="text" name="title" maxlength="100" required>
+                                                    </div>
+                                                    @if ($errors->has('title'))
+                                                        <br>
+                                                        <div class="laalert alert-danger fade in" role="alert">
+                                                            <strong>{{ $errors->first('title') }}</strong>
+                                                        </div>
+                                                    @endif
+                                                </div>
+
                                                 <h6 class="comment-heading">Biography</h6><br>
                                                 <div class="comment-form">
                                                     <div class="row">
-                                                    <textarea name="biography" class="comment-input" rows="6" placeholder="Tell us the story of who you are." style="width: 100%;" required>{{old('biography') ?: $user->biography}}</textarea>
+                                                    <textarea name="biography" class="comment-input" rows="6" placeholder="Tell us the story of who you are." style="width: 100%;" required maxlength="10000">{{old('biography') ?: $user->biography}}</textarea>
                                                     </div>
                                                     @if ($errors->has('biography'))
                                                         <br>
