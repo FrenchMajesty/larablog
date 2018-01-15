@@ -5,7 +5,7 @@
 <div class="container">
 
 			<div class="head-about">
-				<h1 class="about-h1">Hi, I'm {{env('BLOGGER_FULL_NAME')}}</h1>
+				<h1 class="about-h1">Hi, I'm {{$user->firstname}}</h1>
 				<p class="lead about-lead">Welcome to my blog, take your time give it a read and browse around.</p>
 			</div>
 
@@ -17,12 +17,15 @@
 					<div class="row laread-about">
 
 						<div class="about-picture">
-							<img src="{{asset('public/img/img-47.png')}}" alt="" />
+							<img src="{{$user->picture ?: asset('public/img/img-47.png')}}" alt="" />
 						</div>
 
-						<p class="basic-info">Student / Fashion Designer <span><i class="fa fa-map-marker"></i> Dallas Texas, United States</span></p>
+						<p class="basic-info">{{$user->title}} <span><i class="fa fa-map-marker"></i> {{$user->location}}</span></p>
 
-						<p>Hello Everyone,  My name is {{env('BLOGGER_FULL_NAME')}}.</p>
+						<p>Hey,  My name is {{$user->name}}.</p>
+
+						<h4>About Me</h4>
+						<p>{{$user->biography}}</p>
 
 						<div class="about-info">
 							<span class="info-title">life for me:</span>
