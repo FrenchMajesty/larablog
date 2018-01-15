@@ -103,6 +103,7 @@
 	<script id="twitter-wjs" src="https://platform.twitter.com/widgets.js"></script>
     <script id="facebook-jssdk" src="https://connect.facebook.net/tr_TR/sdk.js#xfbml=1&amp;appId=571763212946322&amp;version=v2.0"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="//widget.cloudinary.com/global/all.js" type="text/javascript"></script>
 	<script src="{{asset('public/js/bootstrap.min.js')}}"></script>
 	<script src="{{asset('public/js/jasny-bootstrap.min.js')}}"></script>
 	<script src="{{asset('public/js/prettify.js')}}"></script>
