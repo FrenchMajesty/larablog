@@ -28,9 +28,9 @@
 <link href='http://fonts.googleapis.com/css?family=Roboto+Slab&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 <!-- Custom styles for this template -->
 <link href="{{asset('public/css/style.css')}}" rel="stylesheet">
-<link href="{{asset('public/css/fileinput.min.css')}}" rel="stylesheet">
+<!--link href="{{asset('public/css/fileinput.min.css')}}" rel="stylesheet">
 <link href="{{asset('public/css/froala_style.min.css')}}" rel="stylesheet">
-<link href="{{asset('public/css/froala_editor.pkgd.min.css')}}" rel="stylesheet">
+<link href="{{asset('public/css/froala_editor.pkgd.min.css')}}" rel="stylesheet"-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -83,8 +83,7 @@
 							<li>
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">About</a>
                                 <ul class="dropdown-menu" role="menu">
-									<li><a href="panel/contacts">How to Find Me</a></li>
-									<li><a href="panel/my-details">My Details</a></li>
+									<li><a href="{{route('panel.account')}}">Edit My Account</a></li>
 								</ul>
 							</li>
 						</ul>
@@ -120,9 +119,9 @@
 	<script src="{{asset('public/js/calendar.js')}}"></script>
     <script src="{{asset('public/js/jquery.touchSwipe.min.js')}}"></script>
 	<script src="{{asset('public/js/script.js')}}"></script>
+	<!--script src="{{asset('public/js/fileinput.min.js')}}"></script>
 	<script src="{{asset('public/js/custom.js')}}"></script>
-	<script src="{{asset('public/js/fileinput.min.js')}}"></script>
-	<script src="{{asset('public/js/froala_editor.pkgd.min.js')}}"></script>
+	<script src="{{asset('public/js/froala_editor.pkgd.min.js')}}"></script-->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
 
