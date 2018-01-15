@@ -17,13 +17,4 @@ class HomeController extends Controller
         $blogs = Blog::paginate(10);
         return view('site.index', compact('blogs'));
     }
-
-    /**
-     * Show the about blogger page
-     * @return \Illimunate\Http\Response 
-     */
-    public function about()
-    {
-        return view('site.about');
-    }
 }

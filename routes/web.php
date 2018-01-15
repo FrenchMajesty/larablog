@@ -6,7 +6,7 @@ Route::get('/', 'HomeController@index')->name('index');
 
 Route::get('/contact', 'HomeController@contact')->name('contact');
 
-Route::get('/about', 'HomeController@about')->name('about');
+Route::get('/about', 'BloggerController@index')->name('about');
 
 Route::get('/gallery', 'ImageController@gallery')->name('gallery');
 
