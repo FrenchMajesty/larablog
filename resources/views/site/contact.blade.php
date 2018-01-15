@@ -1,4 +1,4 @@
-@yield('pageTitle', 'Get in Touch')
+@section('pageTitle', 'Get in Touch')
 @extends ('layout')
 
 @section('content')

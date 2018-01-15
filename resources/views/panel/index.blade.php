@@ -1,4 +1,4 @@
-@yield('pageTitle','Home')
+@section('pageTitle','Home')
 @extends ('panel')
 
 @section('content')
