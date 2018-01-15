@@ -11,10 +11,12 @@
         "laravel/tinker": "~1.0"
     },
     "require-dev": {
+        "anlutro/curl": "^1.4",
         "filp/whoops": "~2.0",
         "fzaninotto/faker": "~1.4",
         "mockery/mockery": "0.9.*",
-        "phpunit/phpunit": "~6.0"
+        "phpunit/phpunit": "~6.0",
+        "zjango/laracurl": "^1.1"
     },
     "autoload": {
         "classmap": [
