@@ -40,7 +40,7 @@
 
 						<h4>Get In Touch</h4>
 
-						<p>If you dig the site, subscribe by RSS or email. Comments and emails are always appreciated. You can also contact me through one of my social media.</p>
+						<p>If you dig the site, emails are always appreciated. You can also contact me through one of my social media.</p>
 
 						<ul class="about-social">
 							<li><a href="#"><i class="fa fa-facebook"></i></a></li>
