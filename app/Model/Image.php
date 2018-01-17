@@ -29,6 +29,6 @@ class Image extends Model
      */
     public function tags()
     {
-        return $this->hasMany('App\Model\Content\Tag','id');
+        return $this->belongsToMany('App\Model\Content\Tag','image_tags');
     }
 }

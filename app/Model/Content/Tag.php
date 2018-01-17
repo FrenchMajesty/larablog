@@ -2,6 +2,7 @@
 
 namespace App\Model\Content;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Eloquent\Model;
 
 class Tag extends Model
@@ -17,7 +18,7 @@ class Tag extends Model
      */
     public function images()
     {
-    	return $this->hasMany('App\Model\Image');
+    	return $this->belongsToMany('App\Model\Image', 'image_tags');
     }
 
     /**
@@ -25,6 +26,6 @@ class Tag extends Model
      */
     public function posts()
     {
-    	return $this->hasMany('App\Model\Blog');
+    	return $this->belongsToMany('App\Model\Blog', 'post_tags','tag_id','post_id');
     }
 }
