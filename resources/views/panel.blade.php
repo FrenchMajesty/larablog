@@ -70,14 +70,12 @@
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Publications</a>
 								<ul class="dropdown-menu" role="menu">
 									<li><a href="panel/feed/edit">Manage Publications</a></li>
-									<li><a href="panel/feed">View Blog Feed</a></li>
 								</ul>
 							</li>
                             <li>
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gallery</a>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="panel/gallery/edit">Manage Gallery</a></li>
-									<li><a href="panel/gallery">View Gallery</a></li>
+									<li><a href="{{route('panel.gallery')}}">Manage Gallery</a></li>
 								</ul>
 							</li>
 							<li>
