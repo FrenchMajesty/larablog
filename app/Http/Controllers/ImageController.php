@@ -4,12 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Model\Image;
 use App\Model\Content\Tag;
+use App\Model\Content\Category;
 use Illuminate\Http\Request;
 
 class ImageController extends Controller
 {	
 	/**
-	 * Show the gallery page
+	 * Show the gallery page.
 	 * @return \Illuminate\Http\Response 
 	 */
     public function gallery()
@@ -17,5 +18,57 @@ class ImageController extends Controller
     	$images = Image::paginate(30);
     	$tags = Tag::all();
     	return view('site.gallery', compact('images', 'tags'));
+    }
+
+    /**
+     * Show the page to edit the gallery.
+     * @return \Illuminate\Http\Response 
+     */
+    public function manager()
+    {
+        $gallery = Image::paginate(10);
+        return view('panel.gallery', compact('gallery'));
+    }
+
+    /**
+     * Show the page to edit an image.
+     * @return \Illuminate\Http\Response 
+     */
+    public function edit(Image $content)
+    {
+        $categories = Category::all();
+        return view('panel.edit', compact('content', 'categories'));
+    }
+
+    /**
+     * Handle the request to update an image
+     * @param  Request $request 
+     * @return \Illuminate\Http\Response           
+     */
+    public function update(Request $request)
+    {
+        $this->validate($request, [
+            'id' => 'required|numeric',
+            'title' => 'required|string|max:120',
+            'tags' => 'required|string|max:100',
+            'type' => 'required|in:post,image',
+            'category' => 'required|numeric|exists:categories,id',
+            'content' => 'required_if:type,post|string|max:10000',
+            'description' => 'required_if:type,post|string|max:400',
+        ]);
+
+        if($request->type == 'image') {
+            $image = Image::find($request->id);
+            $image->title = $request->title;
+            $image->category_id = $request->category;
+            $image->save();
+
+            $tags = explode(',', trim($request->tags));
+            Tag::setForImage($image->id, $tags);
+        }else {
+            // ..
+        }
+
+        return back()->with('status', 'Your '.$request->type.' was succesfully updated!');
     }
 }

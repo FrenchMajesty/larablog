@@ -2,6 +2,8 @@
 
 Auth::routes();
 
+Route::model('image', 'App\Model\Image');
+
 Route::get('/', 'HomeController@index')->name('index');
 
 Route::get('/contact', 'HomeController@contact')->name('contact');
@@ -23,5 +25,17 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
 	Route::post('/account', 'BloggerController@update');
 
 	Route::post('/password', 'BloggerController@passwordUpdate')->name('password.update');
+
+	Route::group(['prefix' => '/gallery'], function() {
+
+		Route::get('/', 'ImageController@manager')->name('panel.gallery');
+
+		Route::get('/{image}', 'ImageController@edit')->name('panel.gallery.edit');
+
+		Route::post('/{image}/update', 'ImageController@update')->name('panel.gallery.update');
+
+		Route::post('/{image}/delete', 'ImageController@delete')->name('panel.gallery.delete');
+
+	});
 
 });
