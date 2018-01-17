@@ -28,4 +28,40 @@ class Tag extends Model
     {
     	return $this->belongsToMany('App\Model\Blog', 'post_tags','tag_id','post_id');
     }
+
+    /**
+     * Update the tags associated with an image
+     * @param int $imageID ID of the image
+     * @param array $tags The new tags
+     */
+    public static function setForImage(int $imageID, array $tags)
+    {
+        $insertRows = [];
+
+        foreach($tags as $name) {
+            $tag = Tag::firstOrCreate(['name' => trim($name)]);
+            $insertRows[] = ['tag_id' => $tag->id, 'image_id' => $imageID];
+        }
+
+        DB::table('image_tags')->where('image_id', $imageID)->delete();
+        DB::table('image_tags')->insert($insertRows);
+    }
+
+    /**
+     * Update the tags associated with a blog post
+     * @param int $postID ID of the blog post
+     * @param array $tags The new tags
+     */
+    public static function setForPost(int $postID, array $tags)
+    {
+        $insertRows = [];
+
+        foreach($tags as $name) {
+            $tag = Tag::findOrCreate(['name' => trim($name)]);
+            $insertRows[] = ['tag_id' => $tag->id, 'post_id' => $postID];
+        }
+
+        DB::table('post_tags')->where('post_id', $postID)->delete();
+        DB::table('post_tags')->insert($insertRows);
+    }
 }
