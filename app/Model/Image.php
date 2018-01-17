@@ -23,4 +23,12 @@ class Image extends Model
     {
     	return $this->belongsTo('App\Model\Content\Category');
     }
+
+    /**
+     * Get the tags associated with this image
+     */
+    public function tags()
+    {
+        return $this->hasMany('App\Model\Content\Tag','id');
+    }
 }

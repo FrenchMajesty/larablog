@@ -42,4 +42,12 @@ class Blog extends Model
 	{
 		return $this->belongsTo('App\Model\Content\Category');
 	}
+
+	/**
+     * Get the tags associated with this blog post
+     */
+    public function tags()
+    {
+        return $this->hasMany('App\Model\Content\Tag');
+    }
 }
