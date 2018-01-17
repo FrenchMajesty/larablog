@@ -40,7 +40,7 @@ class Tag extends Model
 
         foreach($tags as $name) {
             $tag = Tag::firstOrCreate(['name' => trim($name)]);
-            $insertRows[] = ['tag_id' => $tag->id, 'image_id' => $imageID];
+            if(strlen($name) > 2) $insertRows[] = ['tag_id' => $tag->id, 'image_id' => $imageID];
         }
 
         DB::table('image_tags')->where('image_id', $imageID)->delete();
@@ -58,7 +58,7 @@ class Tag extends Model
 
         foreach($tags as $name) {
             $tag = Tag::findOrCreate(['name' => trim($name)]);
-            $insertRows[] = ['tag_id' => $tag->id, 'post_id' => $postID];
+            if(strlen($name) > 2) $insertRows[] = ['tag_id' => $tag->id, 'post_id' => $postID];
         }
 
         DB::table('post_tags')->where('post_id', $postID)->delete();
