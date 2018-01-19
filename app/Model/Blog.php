@@ -48,6 +48,6 @@ class Blog extends Model
      */
     public function tags()
     {
-        return $this->hasMany('App\Model\Content\Tag');
+        return $this->belongsToMany('App\Model\Content\Tag','post_tags','tag_id','post_id');
     }
 }
