@@ -28,9 +28,9 @@
 <link href='http://fonts.googleapis.com/css?family=Roboto+Slab&amp;subset=latin,latin-ext' rel='stylesheet' type='text/css'>
 <!-- Custom styles for this template -->
 <link href="{{asset('public/css/style.css')}}" rel="stylesheet">
-<!--link href="{{asset('public/css/fileinput.min.css')}}" rel="stylesheet">
 <link href="{{asset('public/css/froala_style.min.css')}}" rel="stylesheet">
-<link href="{{asset('public/css/froala_editor.pkgd.min.css')}}" rel="stylesheet"-->
+<link href="{{asset('public/css/froala_editor.pkgd.min.css')}}" rel="stylesheet">
+<!--link href="{{asset('public/css/fileinput.min.css')}}" rel="stylesheet"-->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.css">
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
