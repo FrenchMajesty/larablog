@@ -21,4 +21,13 @@ class AdminController extends Controller
 
     	return view('panel.index', compact('quote', 'posts', 'archives'));
     }
+
+    /**
+     * Redirect the user to the admin dashboard
+     * @return \Illuminate\Http\Response 
+     */
+    public function redirect()
+    {
+        return redirect()->route('panel.index');
+    }
 }

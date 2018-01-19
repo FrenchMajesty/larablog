@@ -4,7 +4,7 @@ Auth::routes();
 
 Route::model('image', 'App\Model\Image');
 
-Route::get('/', 'HomeController@index')->name('index');
+Route::get('/', 'PostController@index')->name('index');
 
 Route::get('/contact', 'HomeController@contact')->name('contact');
 
@@ -12,7 +12,7 @@ Route::get('/about', 'BloggerController@index')->name('about');
 
 Route::get('/gallery', 'ImageController@gallery')->name('gallery');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'AdminController@redirect')->name('home');
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
@@ -39,6 +39,12 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
 		Route::post('/{image}/update', 'ImageController@update')->name('panel.gallery.update');
 
 		Route::post('/{image}/delete', 'ImageController@delete')->name('panel.gallery.delete');
+
+	});
+
+	Route::group(['prefix' => '/post'], function() {
+
+		Route::get('/', 'PostController@manager')->name('panel.post');
 
 	});
 
