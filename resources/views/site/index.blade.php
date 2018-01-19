@@ -5,7 +5,7 @@
 
 <div class="container">
 	<div class="head-text">
-		<h1>{{env('BLOGGER_NAME')}}'s Blog</h1>
+		<h1>{{$user->firstname}}'s Blog</h1>
 		<p class="lead-text">Fashion Designer.</p>
 	</div>
 </div>
