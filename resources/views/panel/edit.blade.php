@@ -84,8 +84,9 @@
                         <div class="row">
                             <select class="comment-input" name="category" required>
                                 <option value="" disabled>-- Please select an option</option>
+                                @php($chosenCategory = old('category') ?: $content->category_id)
                                 @foreach($categories as $category)
-                                    <option value="{{$category->id}}" {{$content->category_id == $category->id ? 'selected' : ''}}>{{$category->name}}</option>
+                                    <option value="{{$category->id}}" {{$chosenCategory == $category->id ? 'selected' : ''}}>{{$category->name}}</option>
                                 @endforeach
                             </select>
                         </div>
