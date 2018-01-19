@@ -69,7 +69,7 @@
 							<li>
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Publications</a>
 								<ul class="dropdown-menu" role="menu">
-									<li><a href="panel/feed/edit">Manage Publications</a></li>
+									<li><a href="{{route('panel.post')}}">Manage Publications</a></li>
 								</ul>
 							</li>
                             <li>
@@ -119,9 +119,9 @@
 	<script src="{{asset('public/js/calendar.js')}}"></script>
     <script src="{{asset('public/js/jquery.touchSwipe.min.js')}}"></script>
 	<script src="{{asset('public/js/script.js')}}"></script>
+	<script src="{{asset('public/js/froala_editor.pkgd.min.js')}}"></script>
 	<!--script src="{{asset('public/js/fileinput.min.js')}}"></script>
-	<script src="{{asset('public/js/custom.js')}}"></script>
-	<script src="{{asset('public/js/froala_editor.pkgd.min.js')}}"></script-->
+	<script src="{{asset('public/js/custom.js')}}"></script-->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/codemirror.min.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.25.0/mode/xml/xml.min.js"></script>
 
