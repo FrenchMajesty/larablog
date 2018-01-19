@@ -70,7 +70,7 @@
                                                 </div>
                                                 <div class="pm-bottom-info clearfix">
                                                     <div class="pull-left">
-                                                        {{$publication->created_at->format('M d, Y')}}
+                                                        {{$publication->created_at->format('M dS, Y')}}
                                                         &nbsp;&nbsp;&nbsp;•&nbsp;&nbsp;&nbsp;
                                                         @foreach($publication->tags as $tag)
                                                             <a href="#">{{$tag->name}}</a>
