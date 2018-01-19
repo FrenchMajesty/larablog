@@ -30,6 +30,10 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
 
 		Route::get('/', 'ImageController@manager')->name('panel.gallery');
 
+		Route::get('/add', 'ImageController@add')->name('panel.gallery.add');
+
+		Route::post('/add', 'ImageController@create');
+
 		Route::get('/{image}', 'ImageController@edit')->name('panel.gallery.edit');
 
 		Route::post('/{image}/update', 'ImageController@update')->name('panel.gallery.update');

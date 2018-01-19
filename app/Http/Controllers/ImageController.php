@@ -21,6 +21,16 @@ class ImageController extends Controller
     }
 
     /**
+     * Show the page to add a new image to the gallery.
+     * @return \Illuminate\Http\Response
+     */
+    public function add()
+    {
+        $categories = Category::all();
+        return view('panel.gallery.add', compact('categories'));
+    }
+
+    /**
      * Show the page to edit the gallery.
      * @return \Illuminate\Http\Response 
      */
@@ -39,6 +49,32 @@ class ImageController extends Controller
     {
         $categories = Category::all();
         return view('panel.edit', compact('content', 'categories'));
+    }
+
+    /**
+     * Handle the request to add an image to the gallery
+     * @param  Request $request 
+     * @return \Illuminate\Http\Response           
+     */
+    public function create(Request $request)
+    {
+        $this->validate($request, [
+            'image' => 'required|string',
+            'title' => 'required|string|max:120',
+            'tags' => 'required|string|max:100',
+            'category' => 'required|numeric|exists:categories,id',
+        ]);
+
+        $image = Image::create([
+            'title' => $request->title,
+            'url' => $request->image,
+            'category_id' => $request->category,
+        ]);
+
+        $tags = explode(',', trim($request->tags));
+        Tag::setForImage($image->id, $tags);
+
+        return redirect()->route('panel.gallery')->with('status', 'Your image was succesfully posted!');
     }
 
     /**

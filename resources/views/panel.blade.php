@@ -75,6 +75,7 @@
                             <li>
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Gallery</a>
 								<ul class="dropdown-menu" role="menu">
+									<li><a href="{{route('panel.gallery.add')}}">Add New Image</a></li>
 									<li><a href="{{route('panel.gallery')}}">Manage Gallery</a></li>
 								</ul>
 							</li>
