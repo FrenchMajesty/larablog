@@ -9,7 +9,9 @@
 		@if(count($tags) > 0 && count($images) > 0)
 		<p id="filters" class="tags">
 			@foreach($tags as $tag)
-			<a data-filter=".{{$tag->name}}" href="#">{{$tag->name}}</a>
+				@if($tag->images->count() > 0)
+					<a data-filter=".{{$tag->name}}" href="#">{{$tag->name}}</a>
+				@endif
 			@endforeach
 			<a data-filter="*" href="#" class="unfilter hide">all</a>
 		</p>
@@ -33,7 +35,7 @@
 		<div class="row masonry masonry-gallery isotopeContainer">
 			
 			@foreach($images as $image)
-			<div class="masonry-row col-md-4 col-sm-6 mg-item fashion lifestyle">
+			<div class="masonry-row col-md-4 col-sm-6 mg-item {{$image->tags->implode('name',' ')}}">
 				<div>
 					<span class="mg-banner">
 						<a href="#" data-gallery-item="list-1"><img src="{{$image->url}}" alt=""></a>
