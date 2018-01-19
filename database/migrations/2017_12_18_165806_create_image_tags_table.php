@@ -17,7 +17,6 @@ class CreateImageTagsTable extends Migration
             $table->increments('id');
             $table->integer('image_id');
             $table->integer('tag_id');
-            $table->timestamps();
         });
     }
 
