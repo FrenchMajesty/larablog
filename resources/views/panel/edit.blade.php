@@ -124,8 +124,11 @@
                             </div>
                         @endif
                         <br><button type="submit" class="btn btn-lg btn-golden">Update {{ucfirst($post)}}</button>
-                        <button type="submit" class="btn btn-lg btn-danger">Delete</button>
+                        <a href="#" id="delete" class="btn btn-lg btn-danger">Delete</a>
                     </div>
+                </form>
+                <form id="delete-form" method="post" action="{{$post == 'image' ? route('panel.gallery.delete', [$content]) : route('panel.post.delete', [$content])}}">
+                    {{csrf_field()}}
                 </form>
             </div>
         </div>
@@ -133,7 +136,9 @@
 </div>
 
 <script>
-    document.addEventListener('DOMContentLoaded', () => { pageLoaded['editPost']() })
+    document.addEventListener('DOMContentLoaded', () => { 
+        $('#delete').on('click', () => $('#delete-form').submit())
+    })
 </script>
 
 @endsection

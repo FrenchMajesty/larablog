@@ -5,6 +5,12 @@
 <div class="container">
     <div class="head-gallery">
         <h1 class="gallery-h1">Manage Gallery</h1>
+        @if(session('status'))
+            <br>
+            <div class="laalert alert-success fade in" role="alert">
+                <strong>{{session('status')}}</strong>
+            </div>
+        @endif
     </div>
 </div>
 <div class="post-fluid">
@@ -30,11 +36,16 @@
                                     </div>
                                     <div class="gi-bottom">
                                         <a href="{{route('panel.gallery.edit',[$image])}}"><i class="fa fa-pencil"></i> Edit</a>
-                                        <a href="{{route('panel.gallery.delete',[$image])}}"><i class="fa fa-trash-o"></i> Delete</a>
+                                        <a href="#" class="delete" data-image-id="{{$image->id}}">
+                                            <i class="fa fa-trash-o delete" data-image-id="{{$image->id}}"></i> Delete
+                                        </a>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <form id="delete-form{{$image->id}}" method="post" action="{{route('panel.gallery.delete', [$image])}}">
+                            {{csrf_field()}}
+                        </form>
                         @endforeach
                     </div>
 
@@ -80,7 +91,12 @@
             </div>
         </div>
 <script>
-    document.addEventListener('DOMContentLoaded', () => { pageLoaded['galleryManager']() } )
+    document.addEventListener('DOMContentLoaded', () => { 
+        $('.delete').on('click', (e) => {
+            const id = $(e.target).attr('data-image-id')
+            $(`#delete-form${id}`).submit()
+        })
+    })
 </script>
 
 @endsection

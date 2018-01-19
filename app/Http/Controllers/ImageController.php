@@ -32,6 +32,7 @@ class ImageController extends Controller
 
     /**
      * Show the page to edit an image.
+     * @param \App\Model\Image $content Image to edit
      * @return \Illuminate\Http\Response 
      */
     public function edit(Image $content)
@@ -70,5 +71,16 @@ class ImageController extends Controller
         }
 
         return back()->with('status', 'Your '.$request->type.' was succesfully updated!');
+    }
+
+    /**
+     * Handle the request to delete an image
+     * @param  App\Model\Image  $image Image to delete
+     * @return \Illuminate\Http\Response        
+     */
+    public function delete(Image $image)
+    {
+        $image->delete();
+        return redirect()->route('panel.gallery')->with('status', 'Your image was successfully deleted!');
     }
 }
