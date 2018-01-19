@@ -15,7 +15,7 @@ class ImageController extends Controller
 	 */
     public function gallery()
     {
-    	$images = Image::paginate(30);
+    	$images = Image::orderBy('created_at','DESC')->paginate(30);
     	$tags = Tag::all();
     	return view('site.gallery', compact('images', 'tags'));
     }
@@ -36,9 +36,7 @@ class ImageController extends Controller
      */
     public function manager()
     {
-        $gallery = Image::where('id','>',0)
-                    ->orderBy('created_at','DESC')
-                    ->paginate(10);
+        $gallery = Image::orderBy('created_at','DESC')->paginate(10);
         return view('panel.gallery', compact('gallery'));
     }
 
