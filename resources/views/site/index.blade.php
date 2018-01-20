@@ -17,7 +17,12 @@
 		<div class="container-medium">
 			<div class="row post-items">
 				<div class="post-item-banner">
-					<img src="{{$blog->picture}}" alt="">									
+					<img src="{{$blog->picture}}" alt="">
+					@if($blog->has_video)
+						<div style="height: 100%; width: 100%">
+							{!! $blog->embed !!}
+						</div>
+					@endif								
 				</div>
 					<div class="col-md-12">
 						<div class="post-item">
