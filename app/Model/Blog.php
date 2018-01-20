@@ -14,6 +14,7 @@ class Blog extends Model
 		'title',
 		'description',
 		'content',
+		'embed',
 		'picture',
 		'category_id',
 		'has_picture',

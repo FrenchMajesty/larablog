@@ -18,6 +18,7 @@ class CreateBlogsTable extends Migration
             $table->string('title');
             $table->text('description');
             $table->text('content');
+            $table->text('embed')->nullable();
             $table->string('picture')->nullable();
             $table->boolean('has_picture')->default(false);
             $table->boolean('has_video')->default(false);
