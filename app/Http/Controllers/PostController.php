@@ -128,4 +128,15 @@ class PostController extends Controller
         $post->save();
         return back()->with('status', 'Your publication was successfully updated!');
     }
+
+    /**
+     * Handle the request to delete a blog post publication.
+     * @param  Blog   $post Post to delete
+     * @return \Illuminate\Http\Response       
+     */
+    public function delete(Blog $post)
+    {
+        $post->delete();
+        return redirect()->route('panel.post')->with('status','Your publication was successfully deleted!');
+    }
 }

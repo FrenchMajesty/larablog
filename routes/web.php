@@ -56,7 +56,7 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
 
 		Route::post('/{post}/update', 'PostController@update')->name('panel.post.update');
 
-		Route::get('/{post}/delete', 'PostController@delete')->name('panel.post.delete');
+		Route::post('/{post}/delete', 'PostController@delete')->name('panel.post.delete');
 
 	});
 
