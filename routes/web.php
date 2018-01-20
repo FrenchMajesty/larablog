@@ -8,8 +8,6 @@ Route::model('post', 'App\Model\Blog');
 
 Route::get('/', 'PostController@index')->name('index');
 
-Route::get('/contact', 'HomeController@contact')->name('contact');
-
 Route::get('/about', 'BloggerController@index')->name('about');
 
 Route::get('/gallery', 'ImageController@gallery')->name('gallery');
