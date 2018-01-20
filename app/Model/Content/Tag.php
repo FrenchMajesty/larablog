@@ -57,7 +57,7 @@ class Tag extends Model
         $insertRows = [];
 
         foreach($tags as $name) {
-            $tag = Tag::findOrCreate(['name' => trim($name)]);
+            $tag = Tag::firstOrCreate(['name' => trim($name)]);
             if(strlen($name) > 2) $insertRows[] = ['tag_id' => $tag->id, 'post_id' => $postID];
         }
 
