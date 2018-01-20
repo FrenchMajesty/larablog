@@ -85,28 +85,24 @@ class ImageController extends Controller
     public function update(Request $request)
     {
         $this->validate($request, [
-            'id' => 'required|numeric',
-            'title' => 'required|string|max:120',
+            'id' => 'required|numeric|exists:images',
+            'title' => 'required|string|max:120|unique:images',
             'tags' => 'required|string|max:100',
             'type' => 'required|in:post,image',
             'category' => 'required|numeric|exists:categories,id',
-            'content' => 'required_if:type,post|string|max:10000',
-            'description' => 'required_if:type,post|string|max:400',
+            'content' => 'required|string|max:10000',
+            'description' => 'required|string|max:400',
         ]);
 
-        if($request->type == 'image') {
-            $image = Image::find($request->id);
-            $image->title = $request->title;
-            $image->category_id = $request->category;
-            $image->save();
+        $image = Image::find($request->id);
+        $image->title = $request->title;
+        $image->category_id = $request->category;
+        $image->save();
 
-            $tags = explode(',', trim($request->tags));
-            Tag::setForImage($image->id, $tags);
-        }else {
-            // ..
-        }
+        $tags = explode(',', trim($request->tags));
+        Tag::setForImage($image->id, $tags);
 
-        return back()->with('status', 'Your '.$request->type.' was succesfully updated!');
+        return back()->with('status', 'Your image was succesfully updated!');
     }
 
     /**
