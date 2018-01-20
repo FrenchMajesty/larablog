@@ -18,7 +18,7 @@
             <div class="row post-items">
                 <div class="col-md-10 col-md-offset-1">
                     <div class="comment-box">
-                        <div class="comment-block">
+                        <div class="comment-block" style="width: 100%">
                             <div class="comment-item">
                                 <div class="comment-body">
                                     <form id="add" method="post" action="">
@@ -66,7 +66,8 @@
                                                         <a href="#" id="uploader" class="btn btn-grey">Upload Picture</a>
                                                     </div>
                                                 @elseif(old('embed'))
-                                                    <textarea name="embed" class="comment-textarea" placeholder="Copy & Paste the <embed> link of your content here" style="height: 11em; display: none;" required>{{old('embed')}}</textarea>
+                                                    <textarea name="embed" class="comment-textarea" placeholder="Copy & Paste the <iframe> link of your content here" style="height: 11em; display: none;" required>{{old('embed')}}</textarea>
+                                                        <p>Please make sure that your embed link's <b>width</b> is set to 100% and <b>height</b> to 450px.</p>
                                                 @endif
                                             </div>
                                              @if ($errors->has('embed'))
@@ -179,7 +180,8 @@
                 setTimeout(initCloudinary, 5)
 
             } else if(buttonName == 'media') {
-                newInput = $(`<textarea name="embed" class="comment-textarea" placeholder="Copy & Paste the <embed> link of your content here" style="height: 11em; display: none;" required></textarea>`)
+                newInput = $(`<textarea name="embed" class="comment-textarea" placeholder="Copy & Paste the <embed> link of your content here" style="height: 11em; display: none;" required></textarea>
+                    <p>Please make sure that your embed link's <b>width</b> is set to 100% and <b>height</b> to 450px.</p>`)
             }else {
                 newInput = $('<i></i>')
             }
