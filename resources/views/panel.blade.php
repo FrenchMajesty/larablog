@@ -69,6 +69,7 @@
 							<li>
 								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Publications</a>
 								<ul class="dropdown-menu" role="menu">
+									<li><a href="{{route('panel.post.add')}}">Add a New Publication</a></li>
 									<li><a href="{{route('panel.post')}}">Manage Publications</a></li>
 								</ul>
 							</li>
