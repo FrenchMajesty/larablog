@@ -10,7 +10,7 @@
 		<p id="filters" class="tags">
 			@foreach($tags as $tag)
 				@if($tag->images->count() > 0)
-					<a data-filter=".{{$tag->name}}" href="#">{{$tag->name}}</a>
+					<a data-filter=".{{str_replace(' ', '-',$tag->name)}}" href="#">{{$tag->name}}</a>
 				@endif
 			@endforeach
 			<a data-filter="*" href="#" class="unfilter hide">all</a>
@@ -35,17 +35,21 @@
 		<div class="row masonry masonry-gallery isotopeContainer">
 			
 			@foreach($images as $image)
-			<div class="masonry-row col-md-4 col-sm-6 mg-item {{$image->tags->implode('name',' ')}}">
-				<div>
-					<span class="mg-banner">
-						<a href="#" data-gallery-item="list-1"><img src="{{$image->url}}" alt=""></a>
-					</span>
-					<div class="mg-content">
-						<span class="mg-top">{{$image->category->name}}</span>
-						<h6><a href="#" data-gallery-item="list-1">{{$image->title}}</a></h6>
+				@php($image->tags->transform(function($item) {
+						$item->name = str_replace(' ', '-', $item->name);
+						return $item;
+					}))
+				<div class="masonry-row col-md-4 col-sm-6 mg-item {{$image->tags->implode('name',' ')}}">
+					<div>
+						<span class="mg-banner">
+							<a href="#" data-gallery-item="list-1"><img src="{{$image->url}}" alt=""></a>
+						</span>
+						<div class="mg-content">
+							<span class="mg-top">{{$image->category->name}}</span>
+							<h6><a href="#" data-gallery-item="list-1">{{$image->title}}</a></h6>
+						</div>
 					</div>
 				</div>
-			</div>
 			@endforeach
 			
 		</div>
