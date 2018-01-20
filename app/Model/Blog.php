@@ -14,9 +14,9 @@ class Blog extends Model
 		'title',
 		'description',
 		'content',
+		'category_id',
 		'embed',
 		'picture',
-		'category_id',
 		'has_picture',
 		'has_video',
 	];
