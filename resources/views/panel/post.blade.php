@@ -62,7 +62,7 @@
                                                         <a href="#">{{strtoupper($publication->category->name)}}</a>
                                                     </div>
                                                     <div class="post-item-social">
-                                                        <a href="#">
+                                                        <a href="{{route('panel.post.edit',[$publication])}}">
                                                             <i class="fa fa-pencil"></i> Edit
                                                         </a>
                                                         <a href="#" data-id="{{$publication->id}}">

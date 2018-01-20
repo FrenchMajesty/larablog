@@ -4,6 +4,8 @@ Auth::routes();
 
 Route::model('image', 'App\Model\Image');
 
+Route::model('post', 'App\Model\Blog');
+
 Route::get('/', 'PostController@index')->name('index');
 
 Route::get('/contact', 'HomeController@contact')->name('contact');
@@ -49,6 +51,12 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
 		Route::get('/add', 'PostController@add')->name('panel.post.add');
 
 		Route::post('/add', 'PostController@create');
+
+		Route::get('/{post}', 'PostController@edit')->name('panel.post.edit');
+
+		Route::post('/{post}/update', 'PostController@update')->name('panel.post.update');
+
+		Route::get('/{post}/delete', 'PostController@delete')->name('panel.post.delete');
 
 	});
 

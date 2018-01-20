@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use App\Model\Content\Category;
 use App\Model\Blog;
+use App\Model\Content\Category;
+use App\Model\Content\Tag;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -39,6 +40,17 @@ class PostController extends Controller
     {
         $categories = Category::all();
         return view('panel.post.add', compact('categories'));
+    }
+
+    /**
+     * Show the page to edit a blog post publication.
+     * @param  \App\Model\Blog   $content Blog model to modify
+     * @return \Illuminate\Http\Response          
+     */
+    public function edit(Blog $content)
+    {
+        $categories = Category::all();
+        return view('panel.edit', compact('content', 'categories'));
     }
 
     /**
@@ -77,5 +89,43 @@ class PostController extends Controller
         }
 
         return redirect()->route('panel.post')->with('status', 'Your publication was successfully created!');
+    }
+
+    /**
+     * Handle the request to update a blog post publication.
+     * @param  Request $request 
+     * @return \Illuminate\Http\Response           
+     */
+    public function update(Request $request)
+    {
+        $this->validate($request, [
+            'id' => 'required|numeric|exists:blogs',
+            'title' => 'required|string|max:120',
+            'description' => 'required|string|max:400',
+            'content' => 'required|string|max:20000',
+            'tags' => 'required|string|max:100',
+            'category' => 'required|string|exists:categories,id',
+            'type' => 'required|string|in:picture,media,text',
+            'embed' => 'required_if:type,media|string',
+            'image' => 'required_if:type,picture|string',
+        ]);
+
+        $post = Blog::find($request->id);
+        $post->title = $request->title;
+        $post->description = $request->description;
+        $post->content = $request->content;
+        $post->category_id = $request->category;
+
+        $tags = explode(',', trim($request->tags));
+        Tag::setForPost($post->id, $tags);
+
+        if($request->type == 'media') {
+            $post->embed = $request->embed;
+        }elseif($request->type == 'picture') {
+            $post->picture = $request->image;
+        }
+
+        $post->save();
+        return back()->with('status', 'Your publication was successfully updated!');
     }
 }
