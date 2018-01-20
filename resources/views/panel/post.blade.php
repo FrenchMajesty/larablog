@@ -15,12 +15,18 @@
                     <div class="post-mediums">
                         <div class="row post-medium nopacity animated fadeInUp">
                             <div class="col-md-8 col-md-offset-2">
-                                <div class="post-item" style="height: 105px;">
+                                <div class="post-item" {{session('status') ? '' : 'style=height:105px;'}}>
                                     <div class="medium-post-box clearfix">
                                         <div class="pm-top-info clearfix">
                                             <div class="pull-left">
-                                                <a href="#">CLICK HERE TO ADD A PUBLICATION</a>
+                                                <a href="{{route('panel.post.add')}}">CLICK HERE TO ADD A PUBLICATION</a>
                                             </div>
+                                            @if(session('status'))
+                                                <br>
+                                                <div class="laalert alert-success fade in" role="alert">
+                                                    <strong>{{session('status')}}</strong>
+                                                </div>
+                                            @endif
                                             <div class="post-item-social">
                                                 <a href="#" class="quick-read"><i class="fa fa-plus"></i></a>
                                             </div>

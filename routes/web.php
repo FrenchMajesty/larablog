@@ -46,6 +46,10 @@ Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
 
 		Route::get('/', 'PostController@manager')->name('panel.post');
 
+		Route::get('/add', 'PostController@add')->name('panel.post.add');
+
+		Route::post('/add', 'PostController@create');
+
 	});
 
 });
