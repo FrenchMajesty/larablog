@@ -46,7 +46,7 @@
                                                 <img src="{{$publication->picture}}">
                                             @elseif($publication->has_video)
                                                 <div style="height: {{$itemHeight}}px;">
-                                                    {!! $publication->content !!}
+                                                    {!! $publication->embed !!}
                                                 </div>
                                             @else 
                                                 <img src="{{asset('public/img/img-26.png')}}">
