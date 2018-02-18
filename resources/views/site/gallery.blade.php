@@ -46,7 +46,7 @@
 				<div class="masonry-row col-md-4 col-sm-6 mg-item {{$image->tags->implode('name',' ')}}">
 					<div>
 						<span class="mg-banner">
-							<a href="#" data-gallery-item="list-1"><img src="{{$image->url}}" alt=""></a>
+							<a href="{{$image->url}}" data-gallery-item="list-1"><img src="{{$image->url}}" alt=""></a>
 						</span>
 						<div class="mg-content">
 							<span class="mg-top">{{$image->category->name}}</span>
@@ -73,5 +73,30 @@
 	@include('partials.no-content')
 @endif
 
+@if(count($images) > 0)
+<div id="list-1" class="" style="display:none">
+	@foreach($images as $image)
+			<a href="{{$image->url}}" title="{{$image->name}}" data-gallery="">
+				<img src="" alt="{{$image->name}}">
+			</a>
+	@endforeach
+		</div>
+<div id="blueimp-list-1" class="blueimp-gallery-controls blueimp-gallery blueimp-gallery-playing gallery-template-white">
+			<div class="slides"></div>
+			<div class="gallery-detail-info">
+				<h3 class="title"></h3>
+				<div class="gallery-share">
+					<span class="date">By the One and Only</span>
+					<!--a href="#" tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-placement="top" data-content="<a href='#'><i class='fa fa-facebook'></i></a><a href='#'><i class='fa fa-twitter'></i></a>" class="pis-share" data-original-title="" title=""><i class="fa fa-share-alt"></i></a-->
+					<a href="#" class="set-fullscreen"><i class="fa fa-expand"></i></a>
+				</div>
+			</div>
+			<a class="prev"><i class="fa fa-angle-left"></i></a>
+			<a class="next"><i class="fa fa-angle-right"></i></a>
+			<a class="close">×</a>
+			<a class="play-pause"></a>
+			<ol class="indicator"></ol>
+		</div>
+@endif
 @include('partials.footer')
 @endsection
