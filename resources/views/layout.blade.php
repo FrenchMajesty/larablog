@@ -34,13 +34,14 @@
 <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
 <![endif]-->
 </head>
-<body>
+@php($themeColor = \Cookie::get('theme-choice') == 'black' ? 'black' : 'none')
+<body class="qr-{{$themeColor}}-theme">
 	<div class="page-loader">
 		<div class="loader-in">Loading...</div>
 		<div class="loader-out">Loading...</div>
 	</div>
 
-	<div class="canvas qr-black-theme">
+	<div id="canvas" class="canvas qr-{{$themeColor}}-theme">
 		<div class="canvas-overlay"></div>
 		@section('navbar')
 			<header>
@@ -54,10 +55,10 @@
 							<i class="fa fa-bars"></i>
 						</a>
 						@endif
-						<a href="#" data-toggle="modal" data-target="#login-form" class="modal-form">
+						<a href="#" data-toggle="modal" data-target="#login-form" class="modal-form" style="margin-left: 10px">
 							<i class="fa fa-user"></i>
 						</a>
-						
+						<a href="#" class="qr-change modal-form"><i class="fa fa-adjust"></i></a>
 
 						
 						<button type="button" class="navbar-toggle collapsed menu-collapse" data-toggle="collapse" data-target="#main-nav">
@@ -116,6 +117,32 @@
 		<script src="{{asset('public/js/screenfull.js')}}"></script>
 		<script src="{{asset('public/js/jquery.touchSwipe.min.js')}}"></script>
 		<script src="{{asset('public/js/script.js')}}"></script>
+		<script type="text/javascript">
+			const route = '{{route('theme', [''])}}';
+			let current = '{{\Cookie::get('theme-choice')}}';
+			$('.qr-change').on('click', () => {
+				let newTheme = 'black';
+
+				if(current == 'black') {
+					newTheme = 'white';
+				}
+
+				current = newTheme;
+
+				$.ajax(`${route}/${newTheme}`);
+				$('#blueimp-list-1').removeClass().addClass(`blueimp-gallery-controls blueimp-gallery blueimp-gallery-playing gallery-template-${newTheme}`);
+				$('#quick-read').removeClass().addClass(`qr-${newTheme}-theme`);
+				
+				if(newTheme == 'white') {
+					newTheme = 'none';
+				}
+
+				$('body').removeClass().addClass(`qr-${newTheme}-theme`);
+				$('#canvas').removeClass().addClass(`canvas qr-${newTheme}-theme`);
+
+
+			});
+		</script>
 		@yield('js')
 	</body>
 	</html>

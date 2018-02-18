@@ -9,8 +9,9 @@
 <br>
 @overwrite
 
+@php($themeColor = \Cookie::get('theme-choice') == 'black' ? 'black' : 'white')
 @section('content')
-<div id="quick-read" class="qr-white-theme" style="display: block">
+<div id="quick-read" class="qr-{{$themeColor}}-theme" style="display: block">
 	<div class="quick-read-head">
 		<div class="container">
 			<a href="{{route('index')}}" class="qr-logo"></a>

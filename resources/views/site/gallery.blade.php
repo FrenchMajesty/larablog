@@ -5,6 +5,7 @@
     <meta name="description" content="My work is displayed here as an inner reflection of my thoughts, check out some of my latest works and creative designs and fall in love.">
 @endsection
 
+@php($themeColor = \Cookie::get('theme-choice') == 'black' ? 'black' : 'white')
 @section('content')
 <div class="container">
 	<div class="head-gallery">
@@ -81,12 +82,12 @@
 			</a>
 	@endforeach
 		</div>
-<div id="blueimp-list-1" class="blueimp-gallery-controls blueimp-gallery blueimp-gallery-playing gallery-template-white">
+<div id="blueimp-list-1" class="blueimp-gallery-controls blueimp-gallery blueimp-gallery-playing gallery-template-{{$themeColor}}">
 			<div class="slides"></div>
 			<div class="gallery-detail-info">
 				<h3 class="title"></h3>
 				<div class="gallery-share">
-					<span class="date">By the One and Only</span>
+					<span class="date">By yours truly</span>
 					<!--a href="#" tabindex="0" role="button" data-toggle="popover" data-trigger="focus" data-placement="top" data-content="<a href='#'><i class='fa fa-facebook'></i></a><a href='#'><i class='fa fa-twitter'></i></a>" class="pis-share" data-original-title="" title=""><i class="fa fa-share-alt"></i></a-->
 					<a href="#" class="set-fullscreen"><i class="fa fa-expand"></i></a>
 				</div>

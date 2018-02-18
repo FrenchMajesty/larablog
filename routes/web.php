@@ -18,6 +18,8 @@ Route::get('/home', 'AdminController@redirect')->name('home');
 
 Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
+Route::get('/change-theme/{color}', 'HomeController@changeTheme')->name('theme');
+
 Route::group(['prefix' => '/admin', 'middleware' => 'auth'], function() {
 
 	Route::get('/', 'AdminController@index')->name('panel.index');
