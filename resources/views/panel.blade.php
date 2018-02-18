@@ -119,7 +119,7 @@
 	<script src="{{asset('public/js/jquery.ellipsis.min.js')}}"></script>
 	<script src="{{asset('public/js/calendar.js')}}"></script>
     <script src="{{asset('public/js/jquery.touchSwipe.min.js')}}"></script>
-	<script src="{{asset('public/js/script.js')}}"></script>
+	<script src="{{asset('public/js/panel-script.js')}}"></script>
 	<script src="{{asset('public/js/froala_editor.pkgd.min.js')}}"></script>
 	<!--script src="{{asset('public/js/fileinput.min.js')}}"></script>
 	<script src="{{asset('public/js/custom.js')}}"></script-->
