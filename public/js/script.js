@@ -169,8 +169,8 @@
 		$('.quick-read').on('click', function(e){
 
 			const blog = $(e.target).parents('.container-fluid')
-			$('.quick-dialog').hide()
-			$(`.quick-dialog[data-blog-id="${blog.data('blog-id')}"]`).show()
+			$('.blog-container').hide()
+			$(`.quick-dialog[data-blog-id="${blog.data('blog-id')}"]`).parent().show()
 			$(".page-loader div").fadeIn("fast");
 			$(".page-loader").fadeIn("fast");
 			$('#quick-read').scrollTop(0);
