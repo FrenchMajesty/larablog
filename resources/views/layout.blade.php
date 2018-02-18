@@ -127,20 +127,22 @@
 					newTheme = 'white';
 				}
 
-				current = newTheme;
 
 				$.ajax(`${route}/${newTheme}`);
 				$('#blueimp-list-1').removeClass().addClass(`blueimp-gallery-controls blueimp-gallery blueimp-gallery-playing gallery-template-${newTheme}`);
 				$('#quick-read').removeClass().addClass(`qr-${newTheme}-theme`);
-				
-				if(newTheme == 'white') {
-					newTheme = 'none';
-				}
+				setTimeout(() => {
+					$('[data-quick-reader]').removeClass().addClass(`qr-${newTheme}-theme`);
 
-				$('body').removeClass().addClass(`qr-${newTheme}-theme`);
-				$('#canvas').removeClass().addClass(`canvas qr-${newTheme}-theme`);
+					if(newTheme == 'white') {
+						newTheme = 'none';
+					}
 
+					$('body').removeClass().addClass(`qr-${newTheme}-theme`);
+					$('#canvas').removeClass().addClass(`canvas qr-${newTheme}-theme`);
+				});
 
+				current = newTheme;
 			});
 		</script>
 		@yield('js')
