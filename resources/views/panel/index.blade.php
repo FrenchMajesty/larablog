@@ -32,20 +32,13 @@
 							@if($posts->count() > 0)
 								@foreach($posts as $post)
 									<li>
-										<a href="#">{{$post->title}}</a>
+										<a href="{{route('post', [$post->slug])}}" target="_blank">{{$post->title}}</a>
 										<i class="date">{{$post->created_at->format('M dS, Y')}}</i>
 									</li>
 								@endforeach
 							@else
 								<p>You do not have any publications yet.</p>
 							@endif
-                            <?php
-                                if(count([]) > 0) {
-                                    foreach($recentPosts as $post) {
-                                        echo '<li><a href="#">'.$post->getName().'</a><i class="date">'.date("M d, Y", strtotime($post->getDate())).'</i></li>';
-                                    }
-                                }
-                            ?>
 						</ul>
 						<div class="laread-list quotes">
 							<span class="quotes-icon"><i class="fa fa-quote-left"></i> QUOTES</span>
@@ -56,14 +49,6 @@
 							{!! $quote->content !!}
 							<span class="whosay">- {{$quote->title}} </span>
 						</div>
-
-                        <ul class="laread-list dribbble-border-bar">
-							<li class="title">DRIBBBLE</li>
-							<li>
-								<a href="#"><img src="{{asset('public/img/img-40.png')}}" alt=""></a>
-								<p><a href="https://dribbble.com/"><i class="fa fa-dribbble"></i> more by Ronlewhorn</a></p>
-							</li>
-						</ul>
 					</div>
 
 				</aside>
@@ -83,7 +68,7 @@
 							<div id="calendar-widget"></div>
 						</div>
 
-                        <ul class="laread-list archive-bar">
+                        <!--ul class="laread-list archive-bar">
                             <?php
                             $oldest = strtotime(date('D m Y'));
                             $month1 = strtotime('-1 month');
@@ -108,7 +93,7 @@
                             <li class="break-list"></li>
 							<li class="mute"><a href="feed/archive/<?php echo date("m/Y", $month7); ?>"><?php echo date("M Y", $month7); ?></a></li>
 							<li class="mute"><a href="feed/archive/<?php echo date("m/Y", $month8); ?>"><?php echo date("M Y", $month8); ?></a></li>
-						</ul>
+						</ul-->
 					</div>
 
 				</aside>

@@ -34,11 +34,11 @@
 
 								@if($post->has_picture)
 									<p><center>
-										<a href="{{$post->picture}}" data-fluidbox-qr><img src="{{$post->picture}}" alt=""></a>
+										<a href="{{$post->picture}}" data-fluidbox-qr><img src="{{$post->picture}}" alt="" style="width: 100%"></a>
 										<!--span class="img-caption">Walk through the Forest</span-->
 									</center></p>
 								@elseif($post->has_video)
-									<div style="margin-top: 2em; margin-bottom: 2em">
+									<div style="margin-top: 2em; margin-bottom: 2em; width: 100%">
 										{!! $post->embed !!}
 									</div>
 								@endif
@@ -72,7 +72,7 @@
 				@if($previous)
 					<a href="{{route('post',[$previous->slug])}}" class="qr-prev" title="{{$previous->title}}">← PREV POST</a>
 				@endif
-				<p class="qr-info">By <a href="#">{{env('BLOGGER_FULL_NAME')}}</a>   •   {{$post->updated_at->format('F jS')}}</p>
+				<p class="qr-info">By <a href="{{route('about')}}" target="_blank">{{$blogger->name}}</a>   •   {{$post->updated_at->format('F jS')}}</p>
 				@if($next)
 					<a href="{{route('post',[$next->slug])}}" class="qr-next" title="{{$next->title}}">NEXT POST →</a>
 				@elseif(!$next && \Agent::isMobile())
