@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use CURL;
 use Illuminate\Http\Request;
+use App\Model\Blog;
 
 class AdminController extends Controller
 {	
@@ -16,7 +17,7 @@ class AdminController extends Controller
     	$curl = new CURL;
     	$response = $curl->get('http://quotesondesign.com/wp-json/posts?filter[orderby]=rand&filter[posts_per_page]=1');
     	$quote = json_decode($response->body)[0];
-    	$posts = collect([]);
+    	$posts = Blog::orderBy('created_at','DESC')->get();
     	$archives = collect([]);
 
     	return view('panel.index', compact('quote', 'posts', 'archives'));
