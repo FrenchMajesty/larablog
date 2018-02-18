@@ -1,5 +1,9 @@
 @section('pageTitle', 'Gallery')
 @extends ('layout')
+@section ('metatags')
+    <meta name="keywords" content="blog, fashion, designer, louisiana, fashion design, clothing, portfolio, design">
+    <meta name="description" content="My work is displayed here as an inner reflection of my thoughts, check out some of my latest works and creative designs and fall in love.">
+@endsection
 
 @section('content')
 <div class="container">

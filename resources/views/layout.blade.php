@@ -4,10 +4,11 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-	<meta name="description" content="">
-	<meta name="author" content="">
+	@php($blogger = \App\User::first())
+	<meta name="author" content="{{$blogger ? $blogger->name : env('APP_NAME')}}">
 	<link rel="icon" href="{{asset('public/img/favicon.ico')}}">
 	<title>@yield('pageTitle') - {{env('APP_NAME')}}</title>
+	@yield('metatags')
 	<!-- Bootstrap core CSS -->
 	<link href="{{asset('public/css/bootstrap.min.css')}}" rel="stylesheet">
 	<!-- Font Awesome CSS -->
@@ -39,63 +40,62 @@
 		<div class="loader-out">Loading...</div>
 	</div>
 
-	<div class="canvas">
+	<div class="canvas qr-black-theme">
 		<div class="canvas-overlay"></div>
-		<header>
-			<nav class="navbar navbar-fixed-top nav-down navbar-laread">
-				<div class="container">
-					<div class="navbar-header">
-						<a class="navbar-brand" href="{{route('index')}}"><img height="64" src="{{asset('public/img/logo-light.png')}}" alt=""></a>
+		@section('navbar')
+			<header>
+				<nav class="navbar navbar-fixed-top nav-@yield('navbar-position','down') navbar-laread">
+					<div class="container">
+						<div class="navbar-header">
+							<a class="navbar-brand" href="{{route('index')}}"><img height="64" src="{{asset('public/img/logo-light.png')}}" alt=""></a>
+						</div>
+						@if(\Auth::user())
+							<a href="{{route('panel.index')}}" class="modal-form" style="margin-left: 10px">
+							<i class="fa fa-bars"></i>
+						</a>
+						@endif
+						<a href="#" data-toggle="modal" data-target="#login-form" class="modal-form">
+							<i class="fa fa-user"></i>
+						</a>
+						
+
+						
+						<button type="button" class="navbar-toggle collapsed menu-collapse" data-toggle="collapse" data-target="#main-nav">
+							<span class="sr-only">Toggle navigation</span>
+							<i class="fa fa-plus"></i>
+						</button>
+						<div class="collapse navbar-collapse" id="main-nav">
+							<ul class="nav navbar-nav">
+								<li>
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">HOME</a>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="{{route('index')}}">Blog Feed</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">PORTFOLIO</a>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="{{route('gallery')}}">Gallery</a></li>
+									</ul>
+								</li>
+								<li>
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">ABOUT</a>
+									<ul class="dropdown-menu" role="menu">
+										<li><a href="{{route('about')}}">More About Me</a></li>
+									</ul>
+								</li>
+							</ul>
+						</div><!--/.nav-collapse -->
+
 					</div>
-					@if(\Auth::user())
-						<a href="{{route('panel.index')}}" class="modal-form" style="margin-left: 10px">
-						<i class="fa fa-bars"></i>
-					</a>
-					@endif
-					<a href="#" data-toggle="modal" data-target="#login-form" class="modal-form">
-						<i class="fa fa-user"></i>
-					</a>
-					
-
-					
-					<button type="button" class="navbar-toggle collapsed menu-collapse" data-toggle="collapse" data-target="#main-nav">
-						<span class="sr-only">Toggle navigation</span>
-						<i class="fa fa-plus"></i>
-					</button>
-					<div class="collapse navbar-collapse" id="main-nav">
-						<ul class="nav navbar-nav">
-							<li>
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">HOME</a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="{{route('index')}}">Blog Feed</a></li>
-								</ul>
-							</li>
-							<li>
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">PORTFOLIO</a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="{{route('gallery')}}">Gallery</a></li>
-								</ul>
-							</li>
-							<li>
-								<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">ABOUT</a>
-								<ul class="dropdown-menu" role="menu">
-									<li><a href="{{route('about')}}">More About Me</a></li>
-								</ul>
-							</li>
-						</ul>
-					</div><!--/.nav-collapse -->
-
-				</div>
-			</nav>
-		</header>
+				</nav>
+			</header>
+		@show
 
 		@yield('content')
 
 		@include('partials.login')
 
-	<!-- Bootstrap core JavaScript
-		================================================== -->
-		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="{{asset('public/js/jquery.min.js')}}"></script>
 		<script src="{{asset('public/js/bootstrap.min.js')}}"></script>
 		<script src="{{asset('public/js/jasny-bootstrap.min.js')}}"></script>
@@ -106,19 +106,16 @@
 		<script src="{{asset('public/js/masonry.js')}}"></script>
 		<script src="{{asset('public/js/viewportchecker.js')}}"></script>
 		<script src="{{asset('public/js/isotope.pkgd.min.js')}}"></script>
-		<script src="{{asset('public/js/calendar.js')}}"></script>
 		<script src="{{asset('public/js/jquery.ellipsis.min.js')}}"></script>
 		<script src="{{asset('public/js/classie.js')}}"></script>
 		<script src="{{asset('public/js/modernizr.custom.js')}}"></script>
 		<script src="{{asset('public/js/uiProgressButton.js')}}"></script>
-		<script src="http://maps.google.com/maps/api/js?sensor=true"></script>
 		<script src="{{asset('public/js/jquery.dotdotdot.min.js')}}"></script>
 		<script src="{{asset('public/js/jquery.colorbox-min.js')}}"></script>
 		<script src="{{asset('public/js/jquery.nicescroll.min.js')}}"></script>
-		<script src="{{asset('public/js/gmaps.js')}}"></script>
 		<script src="{{asset('public/js/screenfull.js')}}"></script>
 		<script src="{{asset('public/js/jquery.touchSwipe.min.js')}}"></script>
 		<script src="{{asset('public/js/script.js')}}"></script>
-		<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');</script>
+		@yield('js')
 	</body>
 	</html>

@@ -1,5 +1,9 @@
 @section('pageTitle','About Me')
 @extends ('layout')
+@section ('metatags')
+    <meta name="keywords" content="blog, fashion, designer, louisiana, fashion design, clothing">
+    <meta name="description" content="A dive into the inter machinations of my thinking and how I produce anything is here on my blog. It is not only the description of my work but me as a person.">
+@endsection
 
 @section('content')
 <div class="container">
@@ -47,7 +51,7 @@
 							<li><a href="#"><i class="fa fa-twitter"></i></a></li>
 							<li><a href="#"><i class="fa fa-google-plus"></i></a></li>
 							<li><a href="#"><i class="fa fa-behance"></i></a></li>
-							<li><a href="#"><i class="fa fa-envelope"></i></a></li>
+							<li><a href="mailto:{{$user->email}}"><i class="fa fa-envelope"></i></a></li>
 						</ul>
 
 					</div>

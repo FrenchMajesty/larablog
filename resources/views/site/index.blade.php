@@ -1,8 +1,11 @@
 @extends ('layout')
 @section('pageTitle', 'Blog Feed')
+@section ('metatags')
+    <meta name="keywords" content="blog, fashion, designer, louisiana, fashion design, clothing">
+    <meta name="description" content="">
+@endsection
 
 @section('content')
-
 <div class="container">
 	<div class="head-text">
 		<h1>{{$user->firstname}}'s Blog</h1>
