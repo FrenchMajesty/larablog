@@ -12,6 +12,7 @@ class Blog extends Model
 	 */
 	protected $fillable = [
 		'title',
+		'slug',
 		'description',
 		'content',
 		'category_id',
@@ -35,6 +36,19 @@ class Blog extends Model
 	 * @var array
 	 */
 	protected $dates = ['created_at','updated_at'];
+
+	/**
+     * Update the slug when saving the model
+     * @return void 
+     */
+    public static function boot()
+    {
+        parent::boot();
+
+        static::saving(function ($model) {
+            $model->slug = $model->id .'-'. str_slug($model->title);
+        });
+    }
 
 	/**
 	 * Get the category in which this blog post was submitted in
