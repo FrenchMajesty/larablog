@@ -10,6 +10,8 @@ Route::get('/', 'PostController@index')->name('index');
 
 Route::get('/about', 'BloggerController@index')->name('about');
 
+Route::get('/post/{slug}', 'PostController@view')->name('post');
+
 Route::get('/gallery', 'ImageController@gallery')->name('gallery');
 
 Route::get('/home', 'AdminController@redirect')->name('home');

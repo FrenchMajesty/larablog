@@ -43,6 +43,28 @@ class PostController extends Controller
     }
 
     /**
+     * Show the full-view page for a blog post
+     * @param  string   $slug Slug title of the blog post to view
+     * @return \Illuminate\Http\Response          
+     */
+    public function view(string $slug)
+    {
+        $blogger = User::first();
+        $post = Blog::where('slug', $slug)->with('category')->firstOrFail();
+        $previous = Blog::where('created_at','<', $post->created_at)
+                ->select('title','slug')
+                ->orderBy('created_at','DESC')
+                ->first();
+
+        $next = Blog::where('created_at','>', $post->created_at)
+                ->select('title','slug')
+                ->orderBy('created_at')
+                ->first();
+
+        return view('site.post', compact('blogger','post','previous','next'));
+    }
+
+    /**
      * Show the page to edit a blog post publication.
      * @param  \App\Model\Blog   $content Blog model to modify
      * @return \Illuminate\Http\Response          
