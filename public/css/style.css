@@ -215,6 +215,9 @@ input.form-control:focus {
 	right: 0;
 	bottom: 0;
 }
+.qr-black-theme .page-loader {
+	background-color: #5f5f5f;
+}
 .loader-in,
 .loader-out {
 	width: 40px;
@@ -7790,6 +7793,9 @@ i.roman {
 	background-color: #3d3d3f;
 	padding-top: 119px;
 	margin-top: 179px;
+}
+.qr-black-theme .footer {
+	background-color: #5f5f5f;
 }
 .footer-logo {
 	padding-bottom: 52px;
